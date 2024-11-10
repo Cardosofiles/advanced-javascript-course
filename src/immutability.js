@@ -111,15 +111,44 @@ const products = [
 ];
 
 /**
- * Cálculo do preço total sem alterar o array original, utilizando reduce para somar o preço dos produtos.
+ * - Cálculo do preço total sem alterar o array original, utilizando reduce para somar o preço dos produtos.
+ * - O método reduce nos permite acumular valores sem modificar o array original,
+ * seguindo o princípio de imutabilidade.
  */
+
 const totalPrice = products.reduce((acc, product) => acc + product.price, 0);
 console.log("Total Price:", totalPrice); // 100
 
 /**
- * - O método reduce nos permite acumular valores sem modificar o array original,
- * seguindo o princípio de imutabilidade.
- */
+ * - Cópia de Objetos:
+ *   - Usamos `Object.assign` para copiar os valores de um objeto para outro.
+ *   - Isso não modifica o original, e pode ser usado para modificar valores de objetos aninhados.
+ **/
+const htmlCourse = {
+  course: "HTML",
+  students: [
+    { name: "Alice", age: 25 },
+    { name: "Bob", age: 30 },
+    { name: "Charlie", age: 28 },
+  ],
+};
+
+const javaScriptCouse = {
+  ...htmlCourse,
+  course: "JavaScript",
+  students: [
+    { name: "Alice", age: 25 },
+    { name: "Bob", age: 30 },
+    { name: "Charlie", age: 28 },
+  ],
+};
+console.log(htmlCourse, javaScriptCouse);
+
+javaScriptCouse.students.push({
+  name: "David",
+  age: 32,
+});
+console.log(htmlCourse, javaScriptCouse);
 
 /**
  * Explicação do Código
