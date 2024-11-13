@@ -137,9 +137,11 @@ const javaScriptCouse = {
   ...htmlCourse,
   course: "JavaScript",
   students: [
-    { name: "Alice", age: 25 },
-    { name: "Bob", age: 30 },
-    { name: "Charlie", age: 28 },
+    ...htmlCourse.students,
+    {
+      name: "Amanda",
+      age: 24,
+    },
   ],
 };
 console.log(htmlCourse, javaScriptCouse);
@@ -149,6 +151,93 @@ javaScriptCouse.students.push({
   age: 32,
 });
 console.log(htmlCourse, javaScriptCouse);
+
+/**
+ * Imutabilidade Profunda de Objetos com deepFreeze
+ *
+ * Esse código implementa uma forma de imutabilidade profunda, onde um objeto
+ * e todas as suas propriedades (incluindo objetos aninhados) ficam congelados,
+ * impedindo qualquer modificação.
+ *
+ * @constant Book - Objeto de exemplo representando um livro, com propriedades
+ * básicas e uma propriedade aninhada para o autor.
+ *
+ * @function deepFreeze - Função que congela recursivamente um objeto e todas
+ * suas propriedades aninhadas, garantindo que não possam ser modificadas.
+ *
+ * Funções e Objetivos:
+ *
+ * - `Object.freeze(Book);`
+ *   - Congela o objeto `Book` em nível superficial, impedindo modificações nas
+ *     propriedades de primeiro nível. Contudo, objetos aninhados, como `author`,
+ *     permanecem mutáveis.
+ *
+ * - `deepFreeze(object)`
+ *   - Recebe um objeto e congela todas as suas propriedades e subpropriedades.
+ *   - Para cada propriedade de `object` que é um objeto, chama `deepFreeze`
+ *     novamente de forma recursiva para assegurar o congelamento em todos os
+ *     níveis.
+ *
+ * Parâmetros:
+ * - `object`: Objeto a ser congelado recursivamente.
+ *
+ * Detalhes da Implementação:
+ * - `Reflect.ownKeys(object)`: Obtém todas as propriedades do objeto, inclusive
+ *   propriedades não enumeráveis, permitindo que o `deepFreeze` congele o objeto
+ *   completamente.
+ * - O loop `for ... of` percorre cada propriedade do objeto.
+ *   - Se uma propriedade for um objeto e não for nula, chama `deepFreeze` nela,
+ *     garantindo o congelamento completo.
+ *
+ * Exemplo de Uso:
+ *
+ * ```javascript
+ * const Book = {
+ *   title: "A Game of Thrones",
+ *   publicationYear: 1996,
+ *   author: {
+ *     name: "George R. R. Martin",
+ *     age: 65,
+ *     nationality: "British",
+ *   },
+ * };
+ * Object.freeze(Book);
+ * deepFreeze(Book);
+ *
+ * console.log(Book);
+ * Book.title = "New Title"; // Ignorado - Book está congelado
+ * Book.author.name = "New Author"; // Ignorado - deepFreeze congela subníveis
+ * ```
+ *
+ * Resultado:
+ * - Todas as propriedades de `Book`, incluindo `author` e suas propriedades,
+ *   são imutáveis após a chamada de `deepFreeze(Book)`.
+ *
+ * Benefícios:
+ * - Garante que objetos complexos (com propriedades aninhadas) permaneçam
+ *   inalterados, útil em situações onde imutabilidade é essencial, como em
+ *   gerenciamento de estado em frameworks de front-end (ex: Redux).
+ */
+const Book = {
+  title: "A Game of Thrones",
+  publicationYear: 1996,
+  author: {
+    name: "George R. R. Martin",
+    age: 65,
+    nationality: "British",
+  },
+};
+console.log(Book);
+Object.freeze(Book);
+
+function deepFreeze(object) {
+  const props = Reflect.ownKeys(object);
+  for (const prop of props) {
+    if (typeof object[prop] === "object" && object[prop] !== null) {
+      deepFreeze(object[prop]);
+    }
+  }
+}
 
 /**
  * Explicação do Código
