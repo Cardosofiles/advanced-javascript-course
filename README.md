@@ -1,6 +1,20 @@
-# Advanced JavaScript Course
+<div align="center">
+
+<h1 align="center">🚀 Curso Avançado de JavaScript</h1>
+
+### Informações
+
+![Instituição](https://img.shields.io/badge/Instituição-OneBitCode-0078D4?style=for-the-badge&logo=azuredevops)
+![Curso](https://img.shields.io/badge/Curso-JavaScript-4B8BBE?style=for-the-badge&logo=github)
+![Professor](https://img.shields.io/badge/Professor-Isaac%20Pontes-FFCA28?style=for-the-badge&logo=linkedin)
+
+**Instituição:** [OneBitCode](https://onebitcode.com/)  
+**Curso:** Funções e recursos avançados de JavaScript  
+**Professor:** [Isaac Pontes](https://www.linkedin.com/in/isaac-pontes/)
 
 Repositório contendo o código-fonte e exemplos práticos do curso avançado de JavaScript. O projeto explora conceitos modernos da linguagem, manipulação de APIs, construção de aplicações backend com foco em práticas profissionais e uso de frameworks minimalistas como o tinyhttp.
+
+</div>
 
 ---
 
@@ -64,17 +78,20 @@ advanced-javascript-course/
 ### Passo a Passo
 
 1. **Clone o repositório**
+
    ```bash
    git clone https://github.com/Cardosofiles/advanced-javascript-course.git
    cd advanced-javascript-course
    ```
 
 2. **Instale as dependências**
+
    ```bash
    npm install
    ```
 
 3. **Configure variáveis de ambiente**
+
    - Não são necessárias variáveis extras para rodar o projeto padrão.
    - Caso o curso acrescente configurações, siga as instruções dos módulos correspondentes.
 
@@ -173,5 +190,13 @@ Contribuições são bem-vindas! Para sugestões, dúvidas ou melhorias, abra um
 <a href="https://cardosofiles.dev/" target="_blank">
   <img src="https://img.shields.io/badge/Portfólio-222222?style=for-the-badge&logo=about.me&logoColor=white" alt="Portfólio"/>
 </a>
+
+</div>
+
+---
+
+<div align="right">
+
+[⬆️ Voltar ao topo](#informações)
 
 </div>
